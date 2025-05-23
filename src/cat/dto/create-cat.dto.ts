@@ -1,6 +1,6 @@
 import { IsInt, IsString, Length, Min } from 'class-validator';
-import { IsUnique } from '../common/validators/is-unique.validator';
 import { Cat } from '../entities/cat.entity';
+import { IsUnique } from 'src/common/validators/is-unique.validator';
 
 export class CreateCatDto {
   @IsString()
@@ -14,4 +14,7 @@ export class CreateCatDto {
 
   @IsString()
   color: string;
+
+  @IsString()
+  url: string;
 }

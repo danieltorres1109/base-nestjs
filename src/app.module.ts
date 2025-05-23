@@ -3,11 +3,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CatModule } from './cat/cat.module';
-import { IsUniqueConstraint } from './cat/common/validators/is-unique.validator';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
-import { FilesModule } from './files/files.module';
 import { ConfigModule } from '@nestjs/config';
+import { FilesModule } from './common/files/files.module';
+import { IsUniqueConstraint } from './common/validators/is-unique.validator';
 
 @Module({
   imports: [

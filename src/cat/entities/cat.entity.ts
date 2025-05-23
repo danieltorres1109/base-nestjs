@@ -13,4 +13,7 @@ export class Cat {
 
   @Column()
   color: string;
+
+  @Column()
+  url: string;
 }
