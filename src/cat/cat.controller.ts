@@ -13,12 +13,15 @@ import { CatService } from './cat.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { ValidRoles } from 'src/core/auth/interfaces';
+import { Auth } from 'src/core/auth/decorators';
 
 @Controller('cats')
 export class CatController {
   constructor(private readonly catService: CatService) {}
 
   @Post()
+  @Auth(ValidRoles.admin)
   create(@Body() createCatDto: CreateCatDto) {
     return this.catService.create(createCatDto);
   }

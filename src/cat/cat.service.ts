@@ -4,11 +4,14 @@ import { UpdateCatDto } from './dto/update-cat.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Cat } from './entities/cat.entity';
 import { Repository } from 'typeorm';
+import { Auth } from 'src/core/auth/decorators';
+import { ValidRoles } from 'src/core/auth/interfaces';
 
 @Injectable()
 export class CatService {
   constructor(@InjectRepository(Cat) private catRepository: Repository<Cat>) {}
 
+  @Auth(ValidRoles.admin)
   async create(createCatDto: CreateCatDto) {
     const cat = this.catRepository.create(createCatDto);
     return this.catRepository.save(cat);

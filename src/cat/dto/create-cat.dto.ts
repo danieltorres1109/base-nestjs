@@ -1,6 +1,6 @@
 import { IsInt, IsString, Length, Min } from 'class-validator';
 import { Cat } from '../entities/cat.entity';
-import { IsUnique } from 'src/common/validators/is-unique.validator';
+import { IsUnique } from 'src/core/validators/is-unique.validator';
 
 export class CreateCatDto {
   @IsString()
