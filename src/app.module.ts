@@ -9,6 +9,7 @@ import { ConfigModule } from '@nestjs/config';
 import { FilesModule } from './core/files/files.module';
 import { IsUniqueConstraint } from './core/validators/is-unique.validator';
 import { AuthModule } from './core/auth/auth.module';
+import { DogModule } from './dog/dog.module';
 
 @Module({
   imports: [
@@ -34,6 +35,8 @@ import { AuthModule } from './core/auth/auth.module';
     FilesModule,
 
     CatModule,
+
+    DogModule,
   ],
   controllers: [AppController],
   providers: [AppService, IsUniqueConstraint],
