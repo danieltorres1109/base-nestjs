@@ -11,17 +11,17 @@ import { ValidRoles } from 'src/core/auth/interfaces';
 export class CatService {
   constructor(@InjectRepository(Cat) private catRepository: Repository<Cat>) {}
 
-  @Auth(ValidRoles.admin)
+  // @Auth(ValidRoles.admin)
   async create(createCatDto: CreateCatDto) {
     const cat = this.catRepository.create(createCatDto);
     return this.catRepository.save(cat);
   }
 
-  findAll() {
+  async findAll() {
     return this.catRepository.find();
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     const cat = this.catRepository.findOne({ where: { id: id } });
     if (!cat) {
       throw new NotFoundException(`Cat with id ${id} not found`);
@@ -37,7 +37,7 @@ export class CatService {
     return this.catRepository.save(cat);
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} cat`;
   }
 }
