@@ -8,6 +8,7 @@ import { FilesModule } from './core/files/files.module';
 import { IsUniqueConstraint } from './core/validators/is-unique.validator';
 import { AuthModule } from './core/auth/auth.module';
 import { DogModule } from './dog/dog.module';
+import { UserModule } from './core/user/user.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -34,6 +35,8 @@ import { DogModule } from './dog/dog.module';
     CatModule,
 
     DogModule,
+
+    UserModule,
   ],
   controllers: [],
   providers: [IsUniqueConstraint],
