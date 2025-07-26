@@ -10,7 +10,7 @@ import { Repository } from 'typeorm';
 
 import * as bcrypt from 'bcrypt';
 
-import { User } from './entities/user.entity';
+import { User, UserRole } from './entities/user.entity';
 import { LoginUserDto, CreateUserDto } from './dto';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 
@@ -30,7 +30,7 @@ export class AuthService {
       const user = this.userRepository.create({
         ...userData,
         password: bcrypt.hashSync(password, 10),
-        roles: ['user'],
+        role: UserRole.USER,
       });
 
       await this.userRepository.save(user);

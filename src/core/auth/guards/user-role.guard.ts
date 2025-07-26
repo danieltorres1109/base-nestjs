@@ -28,11 +28,11 @@ export class UserRoleGuard implements CanActivate {
       throw new BadRequestException('User not found in request');
     }
 
-    if (!Array.isArray(user.roles)) {
-      throw new BadRequestException('User roles must be an array');
+    if (!user.role) {
+      throw new BadRequestException('User does not have a role assigned');
     }
 
-    const hasRole = user.roles.some((role) => validRoles.includes(role));
+    const hasRole = validRoles.includes(user.role);
 
     if (!hasRole) {
       throw new ForbiddenException(

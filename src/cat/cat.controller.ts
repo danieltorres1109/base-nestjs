@@ -13,6 +13,8 @@ import { CatService } from './cat.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { Auth } from 'src/core/auth/decorators';
+import { ValidRoles } from 'src/core/auth/interfaces';
 
 @Controller('cats')
 export class CatController {
@@ -40,6 +42,7 @@ export class CatController {
     return file;
   }
 
+  @Auth(ValidRoles.admin)
   @Get()
   findAll() {
     return this.catService.findAll();

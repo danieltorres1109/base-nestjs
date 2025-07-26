@@ -6,6 +6,12 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
+export enum UserRole {
+  ADMIN = 'admin',
+  USER = 'user',
+  SELLER = 'seller',
+}
+
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn('uuid')
@@ -30,16 +36,12 @@ export class User {
   })
   isActive: boolean;
 
-  @Column('json')
-  roles: string[];
-  // @Column('text', {
-  //   array: true,
-  //   default: ['user'],
-  // })
-  // roles: string[];
-
-  // @OneToMany(() => Product, (product) => product.user)
-  // product: Product;
+  @Column({
+    type: 'enum',
+    enum: UserRole,
+    default: UserRole.USER,
+  })
+  role: UserRole;
 
   @BeforeInsert()
   checkFieldsBeforeInsert() {
