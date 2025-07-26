@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CatModule } from './cat/cat.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
@@ -10,8 +8,6 @@ import { FilesModule } from './core/files/files.module';
 import { IsUniqueConstraint } from './core/validators/is-unique.validator';
 import { AuthModule } from './core/auth/auth.module';
 import { DogModule } from './dog/dog.module';
-import { MessagesWsModule } from './messages-ws/messages-ws.module';
-
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -38,10 +34,8 @@ import { MessagesWsModule } from './messages-ws/messages-ws.module';
     CatModule,
 
     DogModule,
-
-    MessagesWsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService, IsUniqueConstraint],
+  controllers: [],
+  providers: [IsUniqueConstraint],
 })
 export class AppModule {}

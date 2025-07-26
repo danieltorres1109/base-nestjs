@@ -8,6 +8,6 @@ export default class CatSeeder implements Seeder {
     factoryManager: SeederFactoryManager,
   ): Promise<void> {
     const catFactory = factoryManager.get(Cat);
-    await catFactory.saveMany(10); // Inserta 10 gatos generados aleatoriamente
+    await catFactory.saveMany(1000);
   }
 }
