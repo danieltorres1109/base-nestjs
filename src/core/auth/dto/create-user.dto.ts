@@ -6,11 +6,13 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
-import { UserRole } from '../../user/entities/user.entity';
+import { User, UserRole } from '../../user/entities/user.entity';
+import { IsUnique } from 'src/core/validators/is-unique.validator';
 
 export class CreateUserDto {
   @IsString()
   @IsEmail()
+  @IsUnique(User, 'email', { message: 'El correo ya está registrado.' })
   email: string;
 
   @IsString()
