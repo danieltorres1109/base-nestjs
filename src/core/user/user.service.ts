@@ -13,6 +13,7 @@ export class UserService {
 
   async create(dto: CreateUserDto): Promise<User> {
     const user = this.userRepo.create(dto);
+
     return this.userRepo.save(user);
   }
 
@@ -43,7 +44,7 @@ export class UserService {
         id: true,
         email: true,
         password: true,
-        fullName: true,
+        name: true,
         role: true,
       },
     });

@@ -25,8 +25,8 @@ export class CreateUserDto {
   password: string;
 
   @IsString()
-  @MinLength(1)
-  fullName: string;
+  @MinLength(4)
+  name: string;
 
   @IsEnum(UserRole)
   @IsOptional()

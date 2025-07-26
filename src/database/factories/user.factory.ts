@@ -7,7 +7,7 @@ export default setSeederFactory(User, () => {
 
   const firstName = faker.person.firstName(); // OK: usa datos de en_US
   const lastName = faker.person.lastName(); // OK: usa datos de en_US
-  user.fullName = `${firstName} ${lastName}`;
+  user.name = `${firstName} ${lastName}`;
   user.email = faker.internet.email({ firstName, lastName }).toLowerCase();
   user.password =
     '$2b$10$Yaik9.7CcL3qGscy6wP0LOvW1mJC6h7bIJxIb7wxLNdfagHDS0uxC';
